@@ -1,0 +1,89 @@
+{
+  "base_url": "https://test.com/",
+  "package": "com.test.api",
+  "endpoints": [{
+    "name": "UserLogin",
+    "path": "login",
+    "method": "post",
+    "request": {
+      "model": {
+        "properties": [{
+          "name": "username",
+          "type": "string",
+          "default": ""
+        },
+          {
+            "name": "password",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    },
+    "response": {
+      "model": {
+        "properties": [{
+          "name": "auth_token",
+          "type": "string",
+          "default": ""
+        },
+          {
+            "name": "refresh_token",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    }
+  }, {
+    "name": "UserLogin2",
+    "path": "login",
+    "method": "post",
+    "request": {
+      "model": {
+        "properties": [{
+          "name": "username",
+          "type": "string",
+          "default": ""
+        },
+          {
+            "name": "password",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    },
+    "response": {
+      "model": {
+        "properties": [{
+          "name": "auth_token",
+          "type": "string",
+          "default": ""
+        },
+          {
+            "name": "refresh_token",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    }
+  }, {
+    "name": "CheckIn",
+    "path": "checkin",
+    "method": "post",
+    "request": {
+      "model": null
+    },
+    "response": {
+      "model": {
+        "properties": [{
+          "name": "created_at",
+          "type": "string",
+          "default": ""
+        }]
+      }
+    }
+  }]
+}

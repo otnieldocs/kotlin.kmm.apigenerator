@@ -1,0 +1,5 @@
+suspend fun callPost%apiName%(): %apiName%Response? {
+        return client.post<%apiName%Response>("${BASE_URL}/%endPoint%") {
+            contentType(ContentType.Application.Json)
+        }
+    }
