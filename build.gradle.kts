@@ -186,6 +186,24 @@ abstract class GenerateRestApiTask: DefaultTask() {
             .replace("%endPoint%", endpoint)
     }
 
+    private fun createApiGetWithoutParamsFunction(apiName: String, endpoint: String): String {
+        val template = getFile("fun_api_get_wo_params_template.txt")
+
+        return template.readText()
+            .replace("%apiName%", snakeToUpperCamelCase(apiName))
+            .replace("%endPoint%", endpoint)
+    }
+
+    private fun createApiGetWithParamsFunction(apiName: String, endpoint: String): String {
+        val template = getFile("fun_api_get_wo_params_template.txt")
+        val params = "parseQueryString(RestApiUtils.toParameter(queryParams))"
+
+        return template.readText()
+            .replace("%apiName%", apiName)
+            .replace("%endPoint%", endpoint)
+            .replace("%params%", params)
+    }
+
     private fun writeApiCollectionClass(functionDefs: List<FunctionDef>) {
         val path = "src/main/kotlin/${project.group}/api/RestApiCollection.kt"
         val template = getFile("class_api_collection_template.txt")
@@ -200,10 +218,16 @@ abstract class GenerateRestApiTask: DefaultTask() {
                 def.method == "post" && def.withRequest.not() -> {
                     createApiPostWithoutRequestFunction(def.apiName, def.endpoint)
                 }
+                def.method == "get" && def.withRequest.not() -> {
+                    createApiGetWithoutParamsFunction(def.apiName, def.endpoint)
+                }
+                def.method == "get" && def.withRequest -> {
+                    createApiGetWithParamsFunction(def.apiName, def.endpoint)
+                }
                 else -> ""
             }
 
-            apiFunctions +=  apiFunction + "\n\t"
+            apiFunctions +=  apiFunction + "\n\n\t"
         }
 
         val code = template.readText()

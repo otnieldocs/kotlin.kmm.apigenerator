@@ -1,0 +1,6 @@
+suspend fun callGet%apiName%(queryParams: Map<String, String>): %apiName%Response? {
+        return client.get("${BASE_URL}/%endPoint%") {
+            contentType(ContentType.Application.Json)
+            %params%
+        }
+    }

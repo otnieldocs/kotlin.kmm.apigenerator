@@ -12,16 +12,25 @@ class RestApiCollection(private val client: HttpClient) {
             body = request
         }
     }
+
 	suspend fun callPostUserLogin2(request: UserLogin2Request): UserLogin2Response? {
         return client.post("${BASE_URL}/login") {
             contentType(ContentType.Application.Json)
             body = request
         }
     }
+
 	suspend fun callPostCheckIn(): CheckInResponse? {
         return client.post("${BASE_URL}/checkin") {
             contentType(ContentType.Application.Json)
         }
     }
+
+	suspend fun callGetGetAllUser(): GetAllUserResponse? {
+        return client.get("${BASE_URL}/get_all_user") {
+            contentType(ContentType.Application.Json)
+        }
+    }
+
 	
 }

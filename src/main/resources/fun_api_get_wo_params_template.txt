@@ -1,0 +1,5 @@
+suspend fun callGet%apiName%(): %apiName%Response? {
+        return client.get("${BASE_URL}/%endPoint%") {
+            contentType(ContentType.Application.Json)
+        }
+    }

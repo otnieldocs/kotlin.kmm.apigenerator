@@ -85,5 +85,21 @@
         }]
       }
     }
+  }, {
+    "name": "GetAllUser",
+    "path": "get_all_user",
+    "method": "get",
+    "request": {
+      "model": null
+    },
+    "response": {
+      "model": {
+        "properties": [{
+          "name": "username",
+          "type": "string",
+          "default": ""
+        }]
+      }
+    }
   }]
 }
